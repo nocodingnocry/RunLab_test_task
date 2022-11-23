@@ -9,5 +9,6 @@ def test_purchase_one_shoes():
     mp.move_to_shoes_section()
 
     sp = Shoes_page(driver)
-    sp.setting_filtres_and_add_product()
+    sp.setting_filtres()
+    sp.move_to_item_hoka()
 
