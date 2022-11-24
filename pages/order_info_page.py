@@ -23,10 +23,11 @@ class Order_info_class(Base):
 
     # Actions
     def read_order_completed(self):
-        return self.get_order_completed().text()
+        return self.get_order_completed().text
     # Methods
 
     def finish_screen(self):
+        self.assert_word(self.read_order_completed(), 'Ваш заказ принят')
+        self.assert_url('https://www.runlab.ru/order_third_step/')
         self.get_screenshot()
-        time.sleep(1000)
-        #self.assert_word()
+

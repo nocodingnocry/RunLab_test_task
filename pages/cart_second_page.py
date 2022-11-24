@@ -72,7 +72,6 @@ class Cart_page_2(Base):
         return WebDriverWait(self.driver, 5).until(
             EC.element_to_be_clickable((By.XPATH, self.locator_payment_cash)))
 
-
     # Actions
 
     def input_first_name(self, first_name):
@@ -95,7 +94,7 @@ class Cart_page_2(Base):
         self.get_email_field().send_keys(email)
         print(f'input email: {email}')
 
-    def click_maiiling_checkbox(self):
+    def click_mailing_checkbox(self):
         self.get_checkbox_mailing().click()
         print(f'checkbox off')
 
@@ -104,7 +103,6 @@ class Cart_page_2(Base):
         print('Choiced delivery in Saint-Petersburg')
 
     def input_address_field(self, address):
-        #self.driver.execute_script("arguments[0].scrollIntoView();", self.get_address_field())
         self.get_address_field().send_keys(address)
         print(f'input addres: {address}')
 
@@ -114,12 +112,12 @@ class Cart_page_2(Base):
         print(f'input comment: {comment}')
 
     def click_to_make_order(self):
-        self.locator_make_an_order().click()
+        self.get_button_ordering().click()
         print('Order completed')
 
     def click_payment_cash(self):
         self.get_payment_cash().click()
-        print('Type of payment was choiced')
+        print('Type of payment was choice')
 
     # Methods
 
@@ -132,9 +130,9 @@ class Cart_page_2(Base):
         self.input_address_field('city Etodar, street Beg 159 - 59')
         self.click_payment_cash()
         self.input_email('test@test.test')
-        self.click_maiiling_checkbox()
+        self.click_mailing_checkbox()
         self.input_comment('Test order')
-        s
+        self.click_to_make_order()
         time.sleep(10)
 
 
