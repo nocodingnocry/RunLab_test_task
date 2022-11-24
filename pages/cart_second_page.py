@@ -133,7 +133,7 @@ class Cart_page_2(Base):
         self.click_mailing_checkbox()
         self.input_comment('Test order')
         self.click_to_make_order()
-        time.sleep(10)
+        time.sleep(5)
 
 
 

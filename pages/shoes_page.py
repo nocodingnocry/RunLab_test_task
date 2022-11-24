@@ -25,10 +25,7 @@ class Shoes_page(Base):
     locator_move_to_cart = '//*[@id="move-to-basket-popup"]'
     locator_item_hoka = '//*[@id="product_list"]/div[2]/div[2]/a[1]'
 
-    # // *[ @ id = "product_list"] / div[2] / div[2] / div[3] / div[4] / a
-    # // *[ @ id = "product_list"] / div[2] / div[2] / div[4] / a
-
-    #Getters
+    # Getters
 
     def get_slider_price(self):
         return WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.XPATH, self.locator_slider_price)))
@@ -54,7 +51,7 @@ class Shoes_page(Base):
     def get_item_hoka(self):
         return WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.XPATH, self.locator_item_hoka)))
 
-    #Actions
+    # Actions
 
     def choice_brand(self):
         self.get_brands_list().click()
@@ -67,9 +64,6 @@ class Shoes_page(Base):
         self.get_shows().click()
 
     def scroll_to_adding(self):
-        # action = ActionChains(self.driver)
-        # action.move_to_element(self.get_add_cart()).perform()
-        # self.get_add_cart().location_once_scrolled_into_view
         self.driver.execute_script("window.scrollTo(0, 150)")
 
     # def move_to_item(self):
@@ -79,7 +73,7 @@ class Shoes_page(Base):
     def move_to_item_hoka(self):
         self.get_item_hoka().click()
 
-    #Methods
+    # Methods
     def setting_filtres(self):
         self.choice_brand()
         self.change_price_on_slider()
