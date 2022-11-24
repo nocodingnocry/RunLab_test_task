@@ -1,13 +1,16 @@
 import time
-from selenium import webdriver
+
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-class Shoes_page():
+from base.base_class import Base
+
+class Shoes_page(Base):
 
     def __init__(self, driver):
+        super().__init__(driver)
         self.driver = driver
 
     #Locators
@@ -81,8 +84,10 @@ class Shoes_page():
         self.choice_brand()
         self.change_price_on_slider()
 
+
     def open_item_product(self):
         self.scroll_to_adding()
+        time.sleep(5)
         # self.move_to_item()
         self.move_to_item_hoka()
 

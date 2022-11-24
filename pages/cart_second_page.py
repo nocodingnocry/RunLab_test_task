@@ -1,0 +1,144 @@
+import time
+
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+from base.base_class import Base
+class Cart_page_2(Base):
+
+    def __init__(self, driver):
+        super().__init__(driver)
+        self.driver = driver
+
+    # Locators
+
+    locator_last_name_field = '//*[@id="Order_lastname"]'
+    locator_first_name_field = '//*[@id="Order_name"]'
+    locator_second_name_field = '//*[@id="Order_patronimic"]'
+    locator_phone_field = '//*[@id="Order_phone"]'
+    locator_email_field = '//*[@id="Order_email"]'
+    locator_checkbox_mailing = '//*[@id="yw0"]/fieldset[1]/div[6]/div/div/span'
+    locator_comment_field = '//*[@id="Order_comment"]'
+    locator_radio_delivery_spb = '//*[@id="Order_delivery"]/div[2]/span'
+    locator_address_field = '//*[@id="Order_address"]'
+    locator_make_an_order = '//*[@id="yw0_submit"]'
+    locator_payment_cash = '//*[@id="Order_payment_id"]/div[1]/span'
+
+    # Getting
+
+    def get_first_name_field(self):
+        return WebDriverWait(self.driver, 5).until(
+             EC.element_to_be_clickable((By.XPATH, self.locator_first_name_field)))
+
+    def get_last_name_field(self):
+        return WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, self.locator_last_name_field)))
+
+    def get_second_name_field(self):
+        return WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, self.locator_second_name_field)))
+
+    def get_phone_field(self):
+        return WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, self.locator_phone_field)))
+
+    def get_email_field(self):
+        return WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, self.locator_email_field)))
+
+    def get_comment_field(self):
+        return WebDriverWait(self.driver, 5).until(
+             EC.element_to_be_clickable((By.XPATH, self.locator_comment_field)))
+
+    def get_address_field(self):
+        return WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, self.locator_address_field)))
+
+    def get_checkbox_mailing(self):
+        return WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, self.locator_checkbox_mailing)))
+
+    def get_radio_delivery_spb(self):
+        return WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, self.locator_radio_delivery_spb)))
+
+    def get_button_ordering(self):
+        return WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, self.locator_make_an_order)))
+
+    def get_payment_cash(self):
+        return WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, self.locator_payment_cash)))
+
+
+    # Actions
+
+    def input_first_name(self, first_name):
+        self.get_first_name_field().send_keys(first_name)
+        print(f'input first_name: {first_name}')
+
+    def input_last_name(self, last_name):
+        self.get_last_name_field().send_keys(last_name)
+        print(f'input last_name: {last_name}')
+
+    def input_second_name(self, second_name):
+        self.get_second_name_field().send_keys(second_name)
+        print(f'input second_name: {second_name}')
+
+    def input_phone_number(self, phone_number):
+        self.get_phone_field().send_keys(phone_number)
+        print(f'input phone: {phone_number}')
+
+    def input_email(self, email):
+        self.get_email_field().send_keys(email)
+        print(f'input email: {email}')
+
+    def click_maiiling_checkbox(self):
+        self.get_checkbox_mailing().click()
+        print(f'checkbox off')
+
+    def click_delivery_button_spb(self):
+        self.get_radio_delivery_spb().click()
+        print('Choiced delivery in Saint-Petersburg')
+
+    def input_address_field(self, address):
+        #self.driver.execute_script("arguments[0].scrollIntoView();", self.get_address_field())
+        self.get_address_field().send_keys(address)
+        print(f'input addres: {address}')
+
+    def input_comment(self, comment):
+        self.driver.execute_script("arguments[0].scrollIntoView();", self.get_comment_field())
+        self.get_comment_field().send_keys(comment)
+        print(f'input comment: {comment}')
+
+    def click_to_make_order(self):
+        self.locator_make_an_order().click()
+        print('Order completed')
+
+    def click_payment_cash(self):
+        self.get_payment_cash().click()
+        print('Type of payment was choiced')
+
+    # Methods
+
+    def completion_ordering(self):
+        self.input_first_name('Test')
+        self.input_last_name('Test')
+        self.input_second_name('Test')
+        self.input_phone_number('79000000000')
+        self.click_delivery_button_spb()
+        self.input_address_field('city Etodar, street Beg 159 - 59')
+        self.click_payment_cash()
+        self.input_email('test@test.test')
+        self.click_maiiling_checkbox()
+        self.input_comment('Test order')
+        s
+        time.sleep(10)
+
+
+
+
+
+
