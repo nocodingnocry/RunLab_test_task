@@ -7,7 +7,7 @@ from pages.cart_second_page import *
 from pages.order_info_page import *
 
 from selenium.webdriver.chrome.options import Options
-def test_purchase_one_shoes(set_up):
+def test_purchase_one_shoes():
     option = Options()
     option.add_experimental_option('excludeSwitches', ['enable-logging'])
     driver = webdriver.Chrome(executable_path='/resource/chromedriver.exe', chrome_options=option)

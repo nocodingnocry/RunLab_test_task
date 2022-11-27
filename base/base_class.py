@@ -21,4 +21,4 @@ class Base():
         time.sleep(1)
         now_date = datetime.datetime.utcnow().strftime("%Y.%m.%d.%H-%M-%S")
         name_screenshot = "screenshot_" + str(now_date) + '.png'
-        self.driver.save_screenshot('C:\\Users\\luchk\\GitHub\\RunLab_test_task\\screen' + name_screenshot)
+        self.driver.save_screenshot('C:\\Users\\luchk\\GitHub\\RunLab_test_task\\screen\\' + name_screenshot)

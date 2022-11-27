@@ -6,6 +6,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from base.base_class import Base
+from utilities.loger import Logger
+
 
 class Shoes_page(Base):
 
@@ -75,15 +77,21 @@ class Shoes_page(Base):
 
     # Methods
     def setting_filtres(self):
+        Logger.add_start_step(method='setting_filtres')
         self.choice_brand()
         self.change_price_on_slider()
+        Logger.add_end_step(url=self.driver.current_url, method='setting_filtres')
 
 
     def open_item_product(self):
+        Logger.add_start_step(method='open_item_product')
         self.scroll_to_adding()
-        time.sleep(5)
+        time.sleep(5) # It's need. Solution: http://darrellgrainger.blogspot.com/2012/06/staleelementexception.html.
+        # More: Go to def Product_page, def get_add_to_cart
+        #
         # self.move_to_item()
         self.move_to_item_hoka()
+        Logger.add_end_step(url=self.driver.current_url, method='open_item_product')
 
 
 

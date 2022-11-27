@@ -6,6 +6,9 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from base.base_class import Base
+from utilities.loger import Logger
+
+
 class Cart_page_1(Base):
     def __init__(self, driver):
         super().__init__(driver)
@@ -29,5 +32,7 @@ class Cart_page_1(Base):
 #Methods
 
     def move_to_second_step_order(self):
+        Logger.add_start_step(method='move_to_second_step_order')
         self.click_to_make_order()
+        Logger.add_end_step(url=self.driver.current_url, method='move_to_second_step_order')
 

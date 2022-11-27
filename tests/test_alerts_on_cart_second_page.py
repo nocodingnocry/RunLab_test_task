@@ -8,11 +8,17 @@ from pages.order_info_page import *
 
 from selenium.webdriver.chrome.options import Options
 
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+
+
 
 def test_alerts_on_cart_second_page():
     option = Options()
     option.add_experimental_option('excludeSwitches', ['enable-logging'])
+    #option.add_argument('--ignore-certificate-errors')
     driver = webdriver.Chrome(executable_path='/resource/chromedriver.exe', chrome_options=option)
+    #driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
     mp = Main_page(driver)
     mp.move_to_shoes_section()

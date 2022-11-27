@@ -6,6 +6,9 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from base.base_class import Base
+from utilities.loger import Logger
+
+
 class Cart_page_2(Base):
 
     def __init__(self, driver):
@@ -175,6 +178,7 @@ class Cart_page_2(Base):
     # Methods
 
     def completion_ordering(self):
+        Logger.add_start_step(method='completion_ordering')
         self.input_first_name('Test')
         self.input_last_name('Test')
         self.input_second_name('Test')
@@ -187,8 +191,10 @@ class Cart_page_2(Base):
         self.input_comment('Test order')
         self.click_to_make_order()
         time.sleep(5)
+        Logger.add_end_step(url=self.driver.current_url, method='completion_ordering')
 
     def request_alert_on_second_cart_page(self):
+        Logger.add_start_step(method='request_alert_on_second_cart_page')
         self.click_to_make_order()
         self. assert_word('Необходимо заполнить поле «Фамилия».', self.read_alert_empty_last_name())
         self.assert_word('Необходимо заполнить поле «Имя».',self.read_alert_empty_first_name())
@@ -197,7 +203,8 @@ class Cart_page_2(Base):
         self.assert_word('Необходимо заполнить поле «Способ доставки».', self.read_alert_empty_delivery())
         self.assert_word('Необходимо заполнить поле «Способ оплаты».', self.read_alert_empty_payment())
         print('request_alert_on_second_cart_page was complited')
-        time.sleep(5)
+        #time.sleep(5)
+        Logger.add_end_step(url=self.driver.current_url, method='request_alert_on_second_cart_page')
 
 
 
