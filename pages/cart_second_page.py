@@ -26,6 +26,13 @@ class Cart_page_2(Base):
     locator_make_an_order = '//*[@id="yw0_submit"]'
     locator_payment_cash = '//*[@id="Order_payment_id"]/div[1]/span'
 
+    alert_empty_first_name = '//*[@id="Order_lastname_em_"]'
+    alert_empty_last_name  = '//*[@id="Order_name_em_"]'
+    alert_empty_phone_number = '//*[@id="Order_phone_em_"]'
+    alert_empty_email = '//*[@id="Order_email_em_"]'
+    alert_empty_delivery = '//*[@id="Order_delivery_id_em_"]'
+    alert_empty_payment = '//*[@id="Order_payment_id_em_"]'
+
     # Getting
 
     def get_first_name_field(self):
@@ -71,6 +78,11 @@ class Cart_page_2(Base):
     def get_payment_cash(self):
         return WebDriverWait(self.driver, 5).until(
             EC.element_to_be_clickable((By.XPATH, self.locator_payment_cash)))
+
+    #Getters for Alert checks
+
+    def get_alert_empty_fist_name(self):
+        return WebDriverWait(self.driver,5).until(EC.visibility_of_element_located((By.XPATH, self.alert_empty_first_name)))
 
     # Actions
 
@@ -119,6 +131,12 @@ class Cart_page_2(Base):
         self.get_payment_cash().click()
         print('Type of payment was choice')
 
+    #Alert Actions
+
+    def read_alert_empty_first_name(self):
+        return self.get_alert_empty_fist_name().text
+
+
     # Methods
 
     def completion_ordering(self):
@@ -134,6 +152,15 @@ class Cart_page_2(Base):
         self.input_comment('Test order')
         self.click_to_make_order()
         time.sleep(5)
+
+    def request_alert_on_second_cart_page(self):
+        self.click_to_make_order()
+        self. assert_word('Необходимо заполнить поле «Фамилия».', self.read_alert_empty_first_name())
+
+        self.input_comment('request_alert_on_second_cart_page was complited')
+
+        time.sleep(5)
+
 
 
 
