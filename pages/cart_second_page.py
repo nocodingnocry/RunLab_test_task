@@ -14,8 +14,8 @@ class Cart_page_2(Base):
 
     # Locators
 
-    locator_last_name_field = '//*[@id="Order_lastname"]'
-    locator_first_name_field = '//*[@id="Order_name"]'
+    locator_last_name_field = '//*[@id="Order_name"]'
+    locator_first_name_field = '//*[@id="Order_lastname"]'
     locator_second_name_field = '//*[@id="Order_patronimic"]'
     locator_phone_field = '//*[@id="Order_phone"]'
     locator_email_field = '//*[@id="Order_email"]'
@@ -26,8 +26,8 @@ class Cart_page_2(Base):
     locator_make_an_order = '//*[@id="yw0_submit"]'
     locator_payment_cash = '//*[@id="Order_payment_id"]/div[1]/span'
 
-    alert_empty_first_name = '//*[@id="Order_lastname_em_"]'
-    alert_empty_last_name  = '//*[@id="Order_name_em_"]'
+    alert_empty_first_name = '//*[@id="Order_name_em_"]'
+    alert_empty_last_name  = '//*[@id="Order_lastname_em_"]'
     alert_empty_phone_number = '//*[@id="Order_phone_em_"]'
     alert_empty_email = '//*[@id="Order_email_em_"]'
     alert_empty_delivery = '//*[@id="Order_delivery_id_em_"]'
@@ -82,7 +82,22 @@ class Cart_page_2(Base):
     #Getters for Alert checks
 
     def get_alert_empty_fist_name(self):
-        return WebDriverWait(self.driver,5).until(EC.visibility_of_element_located((By.XPATH, self.alert_empty_first_name)))
+        return WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.alert_empty_first_name)))
+
+    def get_alert_empty_last_name(self):
+        return WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.alert_empty_last_name)))
+
+    def get_alert_empty_phone_number(self):
+        return WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.alert_empty_phone_number)))
+
+    def get_alert_empty_email(self):
+        return WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.alert_empty_email)))
+
+    def get_alert_empty_delivery(self):
+        return WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.alert_empty_delivery)))
+
+    def get_alert_empty_payment(self):
+        return WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.alert_empty_payment)))
 
     # Actions
 
@@ -134,8 +149,28 @@ class Cart_page_2(Base):
     #Alert Actions
 
     def read_alert_empty_first_name(self):
+        print(f'first_name_alert:{self.get_alert_empty_fist_name().text}')
         return self.get_alert_empty_fist_name().text
 
+    def read_alert_empty_last_name(self):
+        print(f'last_name_alert:{self.get_alert_empty_last_name().text}')
+        return self.get_alert_empty_last_name().text
+
+    def read_alert_empty_phone_number(self):
+        print(f'phone_number_alert:{self.get_alert_empty_phone_number().text}')
+        return self.get_alert_empty_phone_number().text
+
+    def read_alert_empty_email(self):
+        print(f'email_alert:{self.get_alert_empty_email().text}')
+        return self.get_alert_empty_email().text
+
+    def read_alert_empty_delivery(self):
+        print(f'email_alert:{self.get_alert_empty_delivery().text}')
+        return self.get_alert_empty_delivery().text
+
+    def read_alert_empty_payment(self):
+        print(f'email_alert:{self.get_alert_empty_payment().text}')
+        return self.get_alert_empty_payment().text
 
     # Methods
 
@@ -155,10 +190,13 @@ class Cart_page_2(Base):
 
     def request_alert_on_second_cart_page(self):
         self.click_to_make_order()
-        self. assert_word('Необходимо заполнить поле «Фамилия».', self.read_alert_empty_first_name())
-
-        self.input_comment('request_alert_on_second_cart_page was complited')
-
+        self. assert_word('Необходимо заполнить поле «Фамилия».', self.read_alert_empty_last_name())
+        self.assert_word('Необходимо заполнить поле «Имя».',self.read_alert_empty_first_name())
+        self.assert_word('Необходимо заполнить поле «Телефон».', self.read_alert_empty_phone_number())
+        self.assert_word('Необходимо заполнить поле «Эл. почта».', self.read_alert_empty_email())
+        self.assert_word('Необходимо заполнить поле «Способ доставки».', self.read_alert_empty_delivery())
+        self.assert_word('Необходимо заполнить поле «Способ оплаты».', self.read_alert_empty_payment())
+        print('request_alert_on_second_cart_page was complited')
         time.sleep(5)
 
 
