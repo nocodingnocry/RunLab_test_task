@@ -1,5 +1,6 @@
 import time
 
+import allure
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -32,7 +33,8 @@ class Cart_page_1(Base):
 #Methods
 
     def move_to_second_step_order(self):
-        Logger.add_start_step(method='move_to_second_step_order')
-        self.click_to_make_order()
-        Logger.add_end_step(url=self.driver.current_url, method='move_to_second_step_order')
+        with allure.step('Move_to_second_step_order'):
+            Logger.add_start_step(method='move_to_second_step_order')
+            self.click_to_make_order()
+            Logger.add_end_step(url=self.driver.current_url, method='move_to_second_step_order')
 

@@ -1,5 +1,6 @@
 import time
 
+import allure
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -61,8 +62,9 @@ class Product_page(Base):
     # Methods
 
     def add_shoes_to_cart(self):
-        Logger.add_start_step(method='add_shoes_to_cart')
-        self.click_add_to_cart()
-        self.click_to_size_product()
-        self.click_move_to_cart()
-        Logger.add_end_step(url=self.driver.current_url, method='add_shoes_to_cart')
+        with allure.step('Add shoes to cart'):
+            Logger.add_start_step(method='add_shoes_to_cart')
+            self.click_add_to_cart()
+            self.click_to_size_product()
+            self.click_move_to_cart()
+            Logger.add_end_step(url=self.driver.current_url, method='add_shoes_to_cart')

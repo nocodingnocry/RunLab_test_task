@@ -1,0 +1,22 @@
+Cookie was accepted
+Scrolled to shoe`s icon
+Clicked to section Shoes
+Change price on slider is completed
+Button "add to cart" was clicked
+Size was choiced
+Moved to cart
+Clicked to button "Make an order"
+Order completed
+last_name_alert:Необходимо заполнить поле «Фамилия».
+the word is correct
+first_name_alert:Необходимо заполнить поле «Имя».
+the word is correct
+phone_number_alert:Необходимо заполнить поле «Телефон».
+the word is correct
+email_alert:Необходимо заполнить поле «Эл. почта».
+the word is correct
+email_alert:Необходимо заполнить поле «Способ доставки».
+the word is correct
+email_alert:Необходимо заполнить поле «Способ оплаты».
+the word is correct
+request_alert_on_second_cart_page was complited

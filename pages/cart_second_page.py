@@ -1,5 +1,6 @@
 import time
 
+import allure
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -178,33 +179,35 @@ class Cart_page_2(Base):
     # Methods
 
     def completion_ordering(self):
-        Logger.add_start_step(method='completion_ordering')
-        self.input_first_name('Test')
-        self.input_last_name('Test')
-        self.input_second_name('Test')
-        self.input_phone_number('79000000000')
-        self.click_delivery_button_spb()
-        self.input_address_field('city Etodar, street Beg 159 - 59')
-        self.click_payment_cash()
-        self.input_email('test@test.test')
-        self.click_mailing_checkbox()
-        self.input_comment('Test order')
-        self.click_to_make_order()
-        time.sleep(5)
-        Logger.add_end_step(url=self.driver.current_url, method='completion_ordering')
+        with allure.step('Completion ordering'):
+            Logger.add_start_step(method='completion_ordering')
+            self.input_first_name('Test')
+            self.input_last_name('Test')
+            self.input_second_name('Test')
+            self.input_phone_number('79000000000')
+            self.click_delivery_button_spb()
+            self.input_address_field('city Etodar, street Beg 159 - 59')
+            self.click_payment_cash()
+            self.input_email('test@test.test')
+            self.click_mailing_checkbox()
+            self.input_comment('Test order')
+            self.click_to_make_order()
+            time.sleep(5)
+            Logger.add_end_step(url=self.driver.current_url, method='completion_ordering')
 
     def request_alert_on_second_cart_page(self):
-        Logger.add_start_step(method='request_alert_on_second_cart_page')
-        self.click_to_make_order()
-        self. assert_word('Необходимо заполнить поле «Фамилия».', self.read_alert_empty_last_name())
-        self.assert_word('Необходимо заполнить поле «Имя».',self.read_alert_empty_first_name())
-        self.assert_word('Необходимо заполнить поле «Телефон».', self.read_alert_empty_phone_number())
-        self.assert_word('Необходимо заполнить поле «Эл. почта».', self.read_alert_empty_email())
-        self.assert_word('Необходимо заполнить поле «Способ доставки».', self.read_alert_empty_delivery())
-        self.assert_word('Необходимо заполнить поле «Способ оплаты».', self.read_alert_empty_payment())
-        print('request_alert_on_second_cart_page was complited')
-        #time.sleep(5)
-        Logger.add_end_step(url=self.driver.current_url, method='request_alert_on_second_cart_page')
+        with allure.step('To request alert on second cart page'):
+            Logger.add_start_step(method='request_alert_on_second_cart_page')
+            self.click_to_make_order()
+            self. assert_word('Необходимо заполнить поле «Фамилия».', self.read_alert_empty_last_name())
+            self.assert_word('Необходимо заполнить поле «Имя».',self.read_alert_empty_first_name())
+            self.assert_word('Необходимо заполнить поле «Телефон».', self.read_alert_empty_phone_number())
+            self.assert_word('Необходимо заполнить поле «Эл. почта».', self.read_alert_empty_email())
+            self.assert_word('Необходимо заполнить поле «Способ доставки».', self.read_alert_empty_delivery())
+            self.assert_word('Необходимо заполнить поле «Способ оплаты».', self.read_alert_empty_payment())
+            print('request_alert_on_second_cart_page was complited')
+            #time.sleep(5)
+            Logger.add_end_step(url=self.driver.current_url, method='request_alert_on_second_cart_page')
 
 
 

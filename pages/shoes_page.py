@@ -1,5 +1,6 @@
 import time
 
+import allure
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -84,14 +85,14 @@ class Shoes_page(Base):
 
 
     def open_item_product(self):
-        Logger.add_start_step(method='open_item_product')
-        self.scroll_to_adding()
-        time.sleep(5) # It's need. Solution: http://darrellgrainger.blogspot.com/2012/06/staleelementexception.html.
-        # More: Go to def Product_page, def get_add_to_cart
-        #
-        # self.move_to_item()
-        self.move_to_item_hoka()
-        Logger.add_end_step(url=self.driver.current_url, method='open_item_product')
+        with allure.step('Open item product'):
+            Logger.add_start_step(method='open_item_product')
+            self.scroll_to_adding()
+            time.sleep(5)  # It's need. Solution: http://darrellgrainger.blogspot.com/2012/06/staleelementexception.html.
+            # More: Go to def Product_page, def get_add_to_cart
+            # self.move_to_item()
+            self.move_to_item_hoka()
+            Logger.add_end_step(url=self.driver.current_url, method='open_item_product')
 
 
 

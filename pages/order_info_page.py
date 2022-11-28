@@ -1,5 +1,6 @@
 import time
 
+import allure
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -27,7 +28,8 @@ class Order_info_class(Base):
     # Methods
 
     def finish_screen(self):
-        self.assert_word(self.read_order_completed(), 'Ваш заказ принят')
-        self.assert_url('https://www.runlab.ru/order_third_step/')
-        self.get_screenshot()
+        with allure.step('Finish_screen'):
+            self.assert_word(self.read_order_completed(), 'Ваш заказ принят')
+            self.assert_url('https://www.runlab.ru/order_third_step/')
+            self.get_screenshot()
 

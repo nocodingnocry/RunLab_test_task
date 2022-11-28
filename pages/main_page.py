@@ -1,5 +1,6 @@
 import time
 
+import allure
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -46,11 +47,12 @@ class Main_page(Base):
         # Methods
 
     def move_to_shoes_section(self):
-        Logger.add_start_step(method='move_to_shoes_section')
-        self.driver.get(self.url)
-        self.driver.maximize_window()
-        self.click_to_accept_cookie()
-        self.scroll_to_down()
-        self.click_on_shoes_page()
-        #time.sleep(5)
-        Logger.add_end_step(url=self.driver.current_url, method='move_to_shoes_section')
+        with allure.step('Move to shoes section'):
+            Logger.add_start_step(method='move_to_shoes_section')
+            self.driver.get(self.url)
+            self.driver.maximize_window()
+            self.click_to_accept_cookie()
+            self.scroll_to_down()
+            self.click_on_shoes_page()
+            #time.sleep(5)
+            Logger.add_end_step(url=self.driver.current_url, method='move_to_shoes_section')
