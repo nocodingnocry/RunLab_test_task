@@ -6,13 +6,15 @@ from pages.cart_first_page import *
 from pages.cart_second_page import *
 from pages.order_info_page import *
 
+import allure
+
 from selenium.webdriver.chrome.options import Options
 
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-
+@allure.description('test alerts on cart second page')
 def test_alerts_on_cart_second_page():
     option = Options()
     option.add_experimental_option('excludeSwitches', ['enable-logging'])
