@@ -1,0 +1,6 @@
+Clicked to icon Login
+Writed email on email field
+Writed password on password field
+Clicked to login Button
+Clicked to icon Login
+URL is correct

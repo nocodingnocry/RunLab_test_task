@@ -1,0 +1,21 @@
+Cookie was accepted
+Scrolled to shoe`s icon
+Clicked to section Shoes
+Change price on slider is completed
+Button "add to cart" was clicked
+Size was choiced
+Moved to cart
+Clicked to button "Make an order"
+input first_name: Test
+input last_name: Test
+input second_name: Test
+input phone: 79000000000
+Choiced delivery in Saint-Petersburg
+input addres: city Etodar, street Beg 159 - 59
+Type of payment was choice
+input email: test@test.test
+checkbox off
+input comment: Test order
+Order completed
+the word is correct
+URL is correct
