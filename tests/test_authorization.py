@@ -6,6 +6,8 @@ import allure
 
 from selenium.webdriver.chrome.options import Options
 
+
+@allure.description('Success authorization')
 def test_success_authorization():
     option = Options()
     option.add_experimental_option('excludeSwitches', ['enable-logging'])
@@ -18,3 +20,5 @@ def test_success_authorization():
     lp.auth()
 
     mp.check_authorization()
+
+

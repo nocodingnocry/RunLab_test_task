@@ -7,6 +7,8 @@ from pages.cart_second_page import *
 from pages.order_info_page import *
 
 from selenium.webdriver.chrome.options import Options
+
+@allure.description('Just example success order')
 def test_purchase_one_shoes():
     option = Options()
     option.add_experimental_option('excludeSwitches', ['enable-logging'])
